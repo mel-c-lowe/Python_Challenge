@@ -13,15 +13,26 @@ def election_results(election_data):
 
 
 #Set up to read csv
-with open(election_csv, 'r') as csvfile:
+with open(election_csv, 'r') as election_data:
 
     #split by commas
-    csvreader = csv.reader(csvfile, delimiter=',')
+    csvreader = csv.reader(election_data, delimiter=',')
     csv_header = next(csvreader)
     print(f"CSV Header: {csv_header}")
 
-    ctr = 0
+    vote_khan = 0
+    vote_correy = 0
+    vote_li = 0
+    vote_otooley = 0
     for candidate in csvreader:
         if candidate[2] == 'Khan':
-            ctr += 1
-    print(ctr)
+            vote_khan += 1
+
+        elif candidate[2] == 'Correy':
+            vote_correy += 1
+
+    
+    print("The vote count for Khan is")
+    print(vote_khan)
+    print("The vote count for Correy is")
+    print(vote_correy)

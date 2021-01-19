@@ -3,7 +3,7 @@ import os
 import csv
 
 # Describe file path to CSV file
-#election_csv = os.path.join('Resources', 'election_data.csv')
+election_csv = os.path.join('Resources', 'election_data.csv')
 
 # candidates = {}
 #What I want to do is build a dictionary where the key is name
