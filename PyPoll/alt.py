@@ -24,6 +24,15 @@ with open(election_csv, 'r') as election_data:
     vote_correy = 0
     vote_li = 0
     vote_otooley = 0
+    
+    # could I do a while loop starting with an empty variable 'active_candidate'?
+    # candidate = []
+    #while candidate == "this is where I don't know how to execute"
+        #put active candidate into dictionary as a value to key of Candidate
+        #if candidate == the next row, then
+            #add to the counter for that candidate
+
+
     for candidate in csvreader:
         if candidate[2] == 'Khan':
             vote_khan += 1
@@ -31,8 +40,33 @@ with open(election_csv, 'r') as election_data:
         elif candidate[2] == 'Correy':
             vote_correy += 1
 
+        elif candidate[2] == 'Li':
+            vote_li += 1
+
+        elif candidate[2] == "O'Tooley":
+            vote_otooley += 1
+
+    #This works below the counter but not above. Weird.
+    total_votes = len(list(csvreader)
+
+
+    # Calculate vote percentages
+    # percent_khan = vote_khan / 3521001
+    # percent_correy = vote_correy / total_votes
+    # percent_li = vote_li / total_votes
+    # percent_otooley = vote_otooley / total_votes 
+
     
-    print("The vote count for Khan is")
-    print(vote_khan)
-    print("The vote count for Correy is")
-    print(vote_correy)
+    print('The vote count for Khan is ' + vote_khan)
+    #print(vote_khan) 
+    
+
+
+
+    # print("The vote count for Correy is")
+    # print(vote_correy)
+    # print("The vote count for Li is") 
+    # print(vote_li)
+    # print("The vote count for O'Tooley is") 
+    # print(vote_otooley)
+
