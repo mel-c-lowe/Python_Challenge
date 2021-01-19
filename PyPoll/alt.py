@@ -31,6 +31,10 @@ with open(election_csv, 'r') as election_data:
         #put active candidate into dictionary as a value to key of Candidate
         #if candidate == the next row, then
             #add to the counter for that candidate
+            #append candidate name to list of candidates?
+            #use list to create dictionary
+                #maybe no?
+            #produce results based on dictionary???
 
 
     for candidate in csvreader:
@@ -47,18 +51,11 @@ with open(election_csv, 'r') as election_data:
             vote_otooley += 1
 
     #This works below the counter but not above. Weird.
-    total_votes = len(list(csvreader)
-
-
-    # Calculate vote percentages
-    # percent_khan = vote_khan / 3521001
-    # percent_correy = vote_correy / total_votes
-    # percent_li = vote_li / total_votes
-    # percent_otooley = vote_otooley / total_votes 
+    # total_votes = len(list(csvreader)
 
     
-    print('The vote count for Khan is ' + vote_khan)
-    #print(vote_khan) 
+    print("The vote count for Khan is")
+    print(vote_khan) 
     
 
 
