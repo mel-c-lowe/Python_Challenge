@@ -5,36 +5,57 @@ import csv
 # Describe file path to CSV file
 election_csv = os.path.join('Resources', 'election_data.csv')
 
-# candidates = {}
-#What I want to do is build a dictionary where the key is name
-#and the values are the unique candidate names
-#but I don't know how to do that
+# What are the elements I am trying to calculate? with election_data as sole parameter
+def election_results(election_data):
+    #candidate = str(election_data[2])
+    vote_count = int()
 
 #Set up to read csv
-with open(election_csv, 'r') as csvfile:
+with open(election_csv, 'r') as election_data:
 
     #split by commas
-    csvreader = csv.reader(csvfile, delimiter=',')
+    csvreader = csv.reader(election_data, delimiter=',')
+    csv_header = next(csvreader)
+    print(f"CSV Header: {csv_header}")
 
-    header = next(csvreader)
+    #Many thanks to Beau Jeffrey for sharing how he simplified
+    #construction of the candidate dictionary
 
-    #Fake prompt to test that csvreader is working
-    #ok, it's reading. now add a counter
-    candidate = input("What candidate are you looking for?")
+    total_votes = 0
+    winner = 0
+    candidate_dict = {}
+    percent_dict = {}
 
-    #loop through data
     for row in csvreader:
 
-        #tell it to check COLUMN 3 [2] for candidate names
-        candidate = str(election_csv)
-        
-        list_of_candidate = list.count(candidate)
+        candidate = row[2]
+        total_votes += 1
+        votes = {}
 
-        if candidate == row[2]:
-            print (candidate)
+        if candidate not in candidate_dict:
+            candidate_dict[candidate] = 1
+
+        else:
+            candidate_dict[candidate] += 1
+
+    print(candidate_dict)
+    # Print the first actor
+    print(f'{candidate_dict["candidate"][0]}')
 
 
 
+
+
+# Final display
+print("Election Results")
+print("-------------------")
+print("Candidate 1 name: percentage count")
+print("Candidate 2 name: percentage count")
+print("Candidate 3 name: percentage count")
+print("Candidate 4 name: percentage count")
+print("-------------------")
+print("Winner: Candidate that wins")
+print("-------------------")
 
 
 
@@ -59,18 +80,7 @@ with open(election_csv, 'r') as csvfile:
 
 
 
-#Everything below here works, I'm just trying a new way to do some stuff
 
-    # # Make sure that worked
-    # # Great! At least the header is working
-    # csv_header = next(csvreader)
-    # print(f"CSV Header: {csv_header}")
-
-    # # This feels like a stupid and inelegant way to identify what the ouput number is
-    # # But I'll fix it if I have time later in the week
-    # vote_count = len(list(csvreader))
-    # print("The total number of votes is")
-    # print(vote_count)
 
    
 
