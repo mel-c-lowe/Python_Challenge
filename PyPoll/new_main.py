@@ -34,8 +34,8 @@ print(vote_count)
 
 # This stuff is different 
 
+# Identify the unique candidates
 unique_candidates = []
-otal_votes = 0
 
 for vote in vote_cast:
 
@@ -50,6 +50,36 @@ print(unique_candidates)
 # So, at this point, I have the vote total, 
 # I've identified all the unique candidates
 # But I have not counted how many votes went to each candidate
+
+# Identify vote counts for each candidate
+candidate_votes = []
+
+# Start with the list of all votes cast and counter of 0
+vote_count = 0
+for vote in unique_candidates:
+    # And compare to name in candidate list
+    for name in vote_cast:
+        # Start running total of votes for candidates
+        if vote == name:
+            vote_count = int(vote_count) + 1
+
+    # Add to the list
+    candidate_votes.append(vote_count)
+
+    #Reset counter for next unique name
+    vote_count = 0
+  
+print(candidate_votes)
+
+
+# Identify winner
+# election_winner = max(candidate_votes)
+# print(election_winner)
+
+
+
+
+
        
 
 
