@@ -75,11 +75,11 @@ print(candidate_votes)
 # Round to three decimal places
 percent_of_vote = []
 for each in (candidate_votes):
-    vote_percent = round((float(int(each) / int(total_vote_count)) * 100), 3)
+    vote_percent = round(float(int(each) / int(total_vote_count)), 3)
+    percentage = "{:.00%}".format(vote_percent)
+    percent_of_vote.append(percentage)
 
-    percent_of_vote.append(vote_percent)
-
-print(percent_of_vote)
+print(percentage)
 
 
 # Ok, so I now have three lists: candidate names, vote counts, and percentages
@@ -100,10 +100,10 @@ print("Election Results")
 print("----------------------------------")
 print(f"Total Votes:  {total_vote_count}")
 print("----------------------------------")
-print(f'{unique_candidates[0]}: {(percent_of_vote[0])}')
-print(unique_candidates[1])
-# print(unique_name_list[2] ":" percent_vote[2]{:.00%} vote_count[2])
-# print(unique_name_list[3] ":" percent_vote[3]{:.00%} vote_count[3])
+print(f'{unique_candidates[0]}: {(percent_of_vote[0])} {(candidate_votes[0])}')
+print(f'{unique_candidates[1]}: {(percent_of_vote[1])} {(candidate_votes[1])}')
+print(f'{unique_candidates[2]}: {(percent_of_vote[2])} {(candidate_votes[2])}')
+print(f'{unique_candidates[3]}: {(percent_of_vote[3])} {(candidate_votes[3])}')
 print("----------------------------------")
 print(f"Winner : {winner}")
 print("----------------------------------")
