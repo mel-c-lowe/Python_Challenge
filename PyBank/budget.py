@@ -22,6 +22,7 @@ with open(bank_csv, 'r') as bank_data:
     # next(csvreader) means read and return current row THEN move to next row
     csvreader = csv.reader(bank_data, delimiter=',')
     csv_header = next(csvreader)
+    print(csv_header)
     previous_row = next(csvreader)
 
     # Total number of months
@@ -30,8 +31,6 @@ with open(bank_csv, 'r') as bank_data:
     # tm_lead = "Total Months:  "
     # print(tm_lead, total_months)
 
-
-    #beau is the best
 
     # total_months = len(list(csvreader)) - 1
     changes_between_months = []
@@ -54,34 +53,34 @@ with open(bank_csv, 'r') as bank_data:
 
         profitloss = int(row[1])
         list_of_profitloss.append(profitloss)
+        total_profitloss += profitloss
 
         previous_row = row
 
+# List of lists and variables
+# changes_between_months = []
+# list_of_months = []
+# list_of_profitloss = []
 
-    print(list_of_months)
-    print(list_of_profitloss)
-    print(changes_between_months)
+# Calculate Total Months
+total_months = len(list_of_months)
+print(total_months)
+
+# Calculate total profit/loss
+print(total_profitloss)
+
+# Results Formatting
+
+print("Financial Analysis")
+print("----------------------------------")
+print("Total: sum_of_profitloss")
+print("Average Change: avg_of_list_of_changes")
+print("Greatest Increase in Profits: max_of_list_of_changes")
+print("Greatest Decrease in Profits: min_of_list_of_changes")
 
 
 
 
-
-
-
-    # month_count = str(row[0])
-
-        # if total_months == 1:
-        #     first_row = profit_loss_start
-
-        # else:
-        #     last_row = profit_loss_end
-        # conditional is not doing anything
-
-
-
-
-# print(profit_loss_start)
-# print(profit_loss_end)
         
 
 
