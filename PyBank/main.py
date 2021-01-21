@@ -28,15 +28,20 @@ with open(bank_csv) as bank_data:
         # print(month)
         # print(profit_loss)
 
-        # If I pick up each entry and treat it as monthly_value, 
-        # I can add each new monthly value through the loop to net_total
-
-        # monthly_value = int(entry[1])
-        # net_total = net_total + monthly_value
-        # print(net_total)
-        # That didn't work
+# Calculate net_total
 
 net_total = sum(profit_loss)
 print(net_total)
+
+# Calculate number of months
+number_of_months = len(month)
+print(number_of_months)
+
+# Make a list of the changes between months
+# This is a list of 85 changes (space between months)
+# To be able to compare to other lists, it needs an additional row
+# Better at the beginning or end?? Does it matter?
+
+
 
 

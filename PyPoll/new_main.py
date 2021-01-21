@@ -26,8 +26,8 @@ with open(election_csv_file) as election_data:
     # the election results
 
 # Count the number of votes
-vote_count = len(vote_cast)
-print(vote_count)
+total_vote_count = len(vote_cast)
+print(total_vote_count)
 
 # Identify unique names in vote_cast list
 # Count appearances of each name in vote_cast list
@@ -71,10 +71,42 @@ for vote in unique_candidates:
   
 print(candidate_votes)
 
+# Calculate percentages, use float to keep numbers after decimal
+# Round to three decimal places
+percent_of_vote = []
+for each in (candidate_votes):
+    vote_percent = round((float(int(each) / int(total_vote_count)) * 100), 3)
+
+    percent_of_vote.append(vote_percent)
+
+print(percent_of_vote)
+
+
+# Ok, so I now have three lists: candidate names, vote counts, and percentages
+# The first determines the order in which the second two display data as it is used
+# as the initial comparison to draw out the counts and calculate percentages
 
 # Identify winner
-# election_winner = max(candidate_votes)
-# print(election_winner)
+# This is only pulling the winning percent of vote. Grrr.
+election_winner = max(percent_of_vote)
+index_for_winner = percent_of_vote.index(election_winner)
+winner = unique_candidates[index_for_winner]
+print(winner)
+
+
+# Results Formatting
+
+print("Election Results")
+print("----------------------------------")
+print(f"Total Votes:  {total_vote_count}")
+print("----------------------------------")
+print(f'{unique_candidates[0]}: {(percent_of_vote[0])}')
+print(unique_candidates[1])
+# print(unique_name_list[2] ":" percent_vote[2]{:.00%} vote_count[2])
+# print(unique_name_list[3] ":" percent_vote[3]{:.00%} vote_count[3])
+print("----------------------------------")
+print(f"Winner : {winner}")
+print("----------------------------------")
 
 
 
