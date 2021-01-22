@@ -60,7 +60,7 @@ total_months = len(list_of_months)
 # Calculate Average Change
 total_changes = sum(changes_between_months)
 # print(total_changes)
-average_change = total_changes / len(changes_between_months)
+average_change = round(total_changes / (len(changes_between_months) - 1), 2)
 # print(average_change)
 
 # Calculate Greatest Increase
@@ -82,10 +82,11 @@ greatest_decrease_month = list_of_months[index_for_decrease]
 
 print("Financial Analysis")
 print("----------------------------------")
-print(f"Total: {sum_of_pl}")
-print(f"Average Change:  {average_change}")
-print(f"Greatest Increase in Profits: {greatest_increase_month} {greatest_increase}")
-print(f"Greatest Decrease in Profits: {greatest_decrease_month} {greatest_decrease}")
+print(f"Total Months: {total_months}")
+print(f"Total: ${sum_of_pl}")
+print(f"Average Change:  ${average_change}")
+print(f"Greatest Increase in Profits: {greatest_increase_month} ${greatest_increase}")
+print(f"Greatest Decrease in Profits: {greatest_decrease_month} ${greatest_decrease}")
 
 
 
