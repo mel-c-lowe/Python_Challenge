@@ -8,41 +8,33 @@ bank_csv = os.path.join('Resources', 'budget_data.csv')
 # Make sure it's reading
 with open(bank_csv, 'r') as bank_data:
 
-    # # Lets just lay out what I will need to work with
-    # net_total = #sum of column[1]
-    # total_months = len(list(csvreader))
-    # change_over_period = #list of row+1 minus row, next row
-    # avg_changes = #sum of all entries in change_over_period divided by len(list(csvreader))-1
-    # greatest_increase = #iterate through change_over_period list and compare 
-    #                     #row and row+1, keeping the greater and continung to iterate and use 
-    #                     #the greater to compare the next row
-    # greatest_decrease = #same as increase, but keep lesser value
-
     # Denote delimiter
     # next(csvreader) means read and return current row THEN move to next row
+    # Kelly Devillier helped me set this up
     csvreader = csv.reader(bank_data, delimiter=',')
-    csv_header = next(csvreader)
-    print(csv_header)
-    previous_row = next(csvreader)
+    csv_header = next(csvreader) # save the header in csv_header, move to next row
+    # print(csv_header) 
+    # print("----------------------------------")
+    previous_row = next(csvreader) # save data in row two for Jan-2010 in previous_row, move to next row
 
-    # Total number of months
-    # This feels inelegant, but better than main.py in pypoll, so we'll go with it
-    # total_months = len(list(csvreader))
-    # tm_lead = "Total Months:  "
-    # print(tm_lead, total_months)
+    # Define lists to create while reading the csv
+    # Be sure to addend data stored in previous_row to start the list when needed
 
-
-    # total_months = len(list(csvreader)) - 1
     changes_between_months = []
+    # Add a zero to beginning to change list to align number of entries
+    changes_between_months.append(0)
     list_of_months = []
     list_of_months.append(previous_row[0])
     list_of_profitloss = []
     list_of_profitloss.append(previous_row[1])
-    #profit_loss_end = int(row[1])
-    #profit_loss_start = int(previous_row[1])
-    # The above is still a list so the index of the value needs to be noted in []
+    previous_profitloss = int(previous_row[1])
+    sum_of_pl = previous_profitloss
+   
+    # print(f"Starting number for Total PL:  {previous_profitloss}")
+    # print("----------------------------------")
 
     for row in csvreader:
+
         # print(row)
         # print(previous_row)
         change = int(row[1]) - int(previous_row[1])
@@ -51,38 +43,49 @@ with open(bank_csv, 'r') as bank_data:
         month = str(row[0])
         list_of_months.append(month)
 
-        profitloss = int(row[1])
-        list_of_profitloss.append(profitloss)
-        total_profitloss += profitloss
+        profitloss_value = int(row[1])
+        # list_of_profitloss.append(profitloss_value)
+        sum_of_pl = sum_of_pl + profitloss_value
 
         previous_row = row
 
-# List of lists and variables
-# changes_between_months = []
-# list_of_months = []
-# list_of_profitloss = []
-
 # Calculate Total Months
 total_months = len(list_of_months)
-print(total_months)
+# print(total_months)
+
 
 # Calculate total profit/loss
-# print(total_profitloss)
+# print(sum_of_pl)
 
 # Calculate Average Change
+total_changes = sum(changes_between_months)
+# print(total_changes)
+average_change = total_changes / len(changes_between_months)
+# print(average_change)
 
 # Calculate Greatest Increase
+# Find month of greatest increase
+greatest_increase = max(changes_between_months)
+index_for_increase = changes_between_months.index(greatest_increase)
+greatest_increase_month = list_of_months[index_for_increase]
+# print(greatest_increase_month)
+
 
 # Calculate Greatest Decrease
+# Find month of greatest decrease
+greatest_decrease = min(changes_between_months)
+index_for_decrease = changes_between_months.index(greatest_decrease)
+greatest_decrease_month = list_of_months[index_for_decrease]
+# print(greatest_decrease_month)
 
 # Results Formatting
 
 print("Financial Analysis")
 print("----------------------------------")
-print("Total: sum_of_profitloss")
-print("Average Change: avg_of_list_of_changes")
-print("Greatest Increase in Profits: max_of_list_of_changes")
-print("Greatest Decrease in Profits: min_of_list_of_changes")
+print(f"Total: {sum_of_pl}")
+print(f"Average Change:  {average_change}")
+print(f"Greatest Increase in Profits: {greatest_increase_month} {greatest_increase}")
+print(f"Greatest Decrease in Profits: {greatest_decrease_month} {greatest_decrease}")
 
 
 
