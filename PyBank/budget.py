@@ -67,7 +67,13 @@ total_months = len(list_of_months)
 print(total_months)
 
 # Calculate total profit/loss
-print(total_profitloss)
+# print(total_profitloss)
+
+# Calculate Average Change
+
+# Calculate Greatest Increase
+
+# Calculate Greatest Decrease
 
 # Results Formatting
 
