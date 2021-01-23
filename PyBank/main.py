@@ -89,18 +89,20 @@ print(f"Greatest Increase in Profits: {greatest_increase_month} ${greatest_incre
 print(f"Greatest Decrease in Profits: {greatest_decrease_month} ${greatest_decrease}")
 
 
-# Attempt 1 at writing a txt file
+# Attempt 1 at writing a txt file was long and had file = PyBank_Analysis after every line
+# Attempt 2 credit must go to Beau Jeffrey, who shared a more concise new line syntax
+# that makes the whole thing look a lot cleaner
 analysis_textfile = os.path.join("Analysis", "PyBank Analysis.txt")
 
 with open(analysis_textfile, "w") as PyBank_Analysis:
 
-    print("Financial Analysis", file = PyBank_Analysis)
-    print("----------------------------------", file = PyBank_Analysis)
-    print(f"Total Months: {total_months}", file = PyBank_Analysis)
-    print(f"Total: ${sum_of_pl}", file = PyBank_Analysis)
-    print(f"Average Change:  ${average_change}", file = PyBank_Analysis)
-    print(f"Greatest Increase in Profits: {greatest_increase_month} ${greatest_increase}", file = PyBank_Analysis)
-    print(f"Greatest Decrease in Profits: {greatest_decrease_month} ${greatest_decrease}", file = PyBank_Analysis)
+    print("Financial Analysis\n"
+    "----------------------------------\n"
+    f"Total Months: {total_months}\n"
+    f"Total: ${sum_of_pl}\n"
+    f"Average Change:  ${average_change}\n"
+    f"Greatest Increase in Profits: {greatest_increase_month} ${greatest_increase}\n"
+    f"Greatest Decrease in Profits: {greatest_decrease_month} ${greatest_decrease}", file = PyBank_Analysis)
 
 
 
