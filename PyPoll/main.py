@@ -11,7 +11,7 @@ with open(election_csv_file) as election_data:
     # Build the csvreader, print header to confirm document is reading
     electionreader = csv.reader(election_data, delimiter=",")
     header = next(electionreader)
-    print(f"CSV Header: {header}")
+    #print(f"CSV Header: {header}")
 
     # Establish empty list for candidate column
     vote_cast = []
@@ -27,12 +27,10 @@ with open(election_csv_file) as election_data:
 
 # Count the number of votes
 total_vote_count = len(vote_cast)
-print(total_vote_count)
+#print(total_vote_count)
 
 # Identify unique names in vote_cast list
 # Count appearances of each name in vote_cast list
-
-# This stuff is different 
 
 # Identify the unique candidates
 unique_candidates = []
@@ -45,11 +43,6 @@ for vote in vote_cast:
 
 # Check to see list has all 4 and only 4 desired candidates
 print(unique_candidates)
-
-
-# So, at this point, I have the vote total, 
-# I've identified all the unique candidates
-# But I have not counted how many votes went to each candidate
 
 # Identify vote counts for each candidate
 candidate_votes = []
@@ -73,7 +66,9 @@ print(candidate_votes)
 
 # Calculate percentages, use float to keep numbers after decimal
 # Round to three decimal places
-# 
+# I have tried numerous formatting opetions, but it either gives me no zeros after the decimal
+# or it gives me 6.  Since all the numbers round to a whole number (no value in the decimal place),
+# I elected to be satisfied with this formatting.
 percent_of_vote = []
 for each in (candidate_votes):
     vote_percent = round(float(int(each) / int(total_vote_count)), 3)
@@ -82,13 +77,11 @@ for each in (candidate_votes):
 
 # print(percentage)
 
-
 # Ok, so I now have three lists: candidate names, vote counts, and percentages
 # The first determines the order in which the second two display data as it is used
 # as the initial comparison to draw out the counts and calculate percentages
 
 # Identify winner
-# This is only pulling the winning percent of vote. Grrr.
 election_winner = max(percent_of_vote)
 index_for_winner = percent_of_vote.index(election_winner)
 winner = unique_candidates[index_for_winner]
@@ -99,6 +92,7 @@ print(winner)
 # Following the example of Stephanie Richards and Beau Jeffrey, I removed the hardcoding 
 # of four lines, one for each candidate, and zipped my reference lists into a tuple.
 # Many thanks to them for sharing their idea!
+# And many thanks to TA Benji for heling me print the tuple to a text file!
 
 election_results_tuple = tuple(zip(unique_candidates, percent_of_vote, candidate_votes))
 print(election_results_tuple)
@@ -114,20 +108,19 @@ print(f"Winner : {winner}")
 print("----------------------------------")
 
 
-
-
-# Attempt 1 at writing a txt file wrote the document line by line
 # Thanks to Beau Jeffrey for cracking the \n new line syntax and sharing with me!
+# I have not applied \n to all lines because of issues printing the tuple
+# This combination simplified the instructions, but ensured appropriate printing of the tuple,
+# so I decided to keep it as it is below.
 analysis_textfile = os.path.join("Analysis", "PyPoll Analysis.txt")
 
 with open(analysis_textfile, "w") as PyPoll_Analysis:
 
-    print("Election Results", file = PyPoll_Analysis)
-    print("----------------------------------", file = PyPoll_Analysis)
-    print(f"Total Votes:  {total_vote_count}", file = PyPoll_Analysis)
-    print("----------------------------------", file = PyPoll_Analysis)
+    print("Election Results\n"
+    "----------------------------------\n"
+    f"Total Votes:  {total_vote_count}\n"
+    "----------------------------------", file = PyPoll_Analysis)
     for entry in election_results_tuple:
         print(f'{entry[0]}: {entry[1]} {entry[2]}', file = PyPoll_Analysis)
-    print("----------------------------------", file = PyPoll_Analysis)
-    print(f"Winner : {winner}", file = PyPoll_Analysis)
-
+    print("----------------------------------\n"
+    f"Winner : {winner}", file = PyPoll_Analysis)
