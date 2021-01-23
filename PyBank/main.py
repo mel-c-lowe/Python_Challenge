@@ -10,15 +10,14 @@ with open(bank_csv, 'r') as bank_data:
 
     # Denote delimiter
     # next(csvreader) means read and return current row THEN move to next row
-    # Kelly Devillier helped me set this up
+    # Kelly Devillier helped me set this up, thanks Kelly!
     csvreader = csv.reader(bank_data, delimiter=',')
     csv_header = next(csvreader) # save the header in csv_header, move to next row
     # print(csv_header) 
-    # print("----------------------------------")
     previous_row = next(csvreader) # save data in row two for Jan-2010 in previous_row, move to next row
 
     # Define lists to create while reading the csv
-    # Be sure to addend data stored in previous_row to start the list when needed
+    # Be sure to append data stored in previous_row to start the list when needed
 
     changes_between_months = []
     # Add a zero to beginning to change list to align number of entries
@@ -30,9 +29,6 @@ with open(bank_csv, 'r') as bank_data:
     previous_profitloss = int(previous_row[1])
     sum_of_pl = previous_profitloss
    
-    # print(f"Starting number for Total PL:  {previous_profitloss}")
-    # print("----------------------------------")
-
     for row in csvreader:
 
         # print(row)
@@ -53,8 +49,7 @@ with open(bank_csv, 'r') as bank_data:
 total_months = len(list_of_months)
 # print(total_months)
 
-
-# Calculate total profit/loss
+# Total of profit/loss calculated in for-loop
 # print(sum_of_pl)
 
 # Calculate Average Change
@@ -91,7 +86,7 @@ print(f"Greatest Decrease in Profits: {greatest_decrease_month} ${greatest_decre
 
 # Attempt 1 at writing a txt file was long and had file = PyBank_Analysis after every line
 # Attempt 2 credit must go to Beau Jeffrey, who shared a more concise new line syntax
-# that makes the whole thing look a lot cleaner
+# that makes the whole thing look a lot cleaner. Thanks, Beau!
 analysis_textfile = os.path.join("Analysis", "PyBank Analysis.txt")
 
 with open(analysis_textfile, "w") as PyBank_Analysis:
