@@ -96,23 +96,28 @@ print(winner)
 
 
 # Results Formatting
-# I recognize that this is hardcoding that makes the results print out not compatible to 
-# CSV files with less or more than 4 candidates. My intention was to resolve that,
-# but I ran out of time.
+# Following the example of Stephanie Richards and Beau Jeffrey, I removed the hardcoding 
+# of four lines, one for each candidate, and zipped my reference lists into a tuple.
+# Many thanks to them for sharing their idea!
+
+election_results_tuple = tuple(zip(unique_candidates, percent_of_vote, candidate_votes))
+print(election_results_tuple)
 
 print("Election Results")
 print("----------------------------------")
 print(f"Total Votes:  {total_vote_count}")
 print("----------------------------------")
-print(f'{unique_candidates[0]}: {(percent_of_vote[0])} ({(candidate_votes[0])})')
-print(f'{unique_candidates[1]}: {(percent_of_vote[1])} ({(candidate_votes[1])})')
-print(f'{unique_candidates[2]}: {(percent_of_vote[2])} ({(candidate_votes[2])})')
-print(f'{unique_candidates[3]}: {(percent_of_vote[3])} ({(candidate_votes[3])})')
+for entry in election_results_tuple:
+        print(f'{entry[0]}: {entry[1]} {entry[2]}')
 print("----------------------------------")
 print(f"Winner : {winner}")
 print("----------------------------------")
 
-# Attempt 1 at writing a txt file
+
+
+
+# Attempt 1 at writing a txt file wrote the document line by line
+# Thanks to Beau Jeffrey for cracking the \n new line syntax and sharing with me!
 analysis_textfile = os.path.join("Analysis", "PyPoll Analysis.txt")
 
 with open(analysis_textfile, "w") as PyPoll_Analysis:
@@ -121,15 +126,8 @@ with open(analysis_textfile, "w") as PyPoll_Analysis:
     print("----------------------------------", file = PyPoll_Analysis)
     print(f"Total Votes:  {total_vote_count}", file = PyPoll_Analysis)
     print("----------------------------------", file = PyPoll_Analysis)
-    print(f'{unique_candidates[0]}: {(percent_of_vote[0])} ({(candidate_votes[0])})', file = PyPoll_Analysis)
-    print(f'{unique_candidates[1]}: {(percent_of_vote[1])} ({(candidate_votes[1])})', file = PyPoll_Analysis)
-    print(f'{unique_candidates[2]}: {(percent_of_vote[2])} ({(candidate_votes[2])})', file = PyPoll_Analysis)
-    print(f'{unique_candidates[3]}: {(percent_of_vote[3])} ({(candidate_votes[3])})', file = PyPoll_Analysis)
+    for entry in election_results_tuple:
+        print(f'{entry[0]}: {entry[1]} {entry[2]}', file = PyPoll_Analysis)
     print("----------------------------------", file = PyPoll_Analysis)
     print(f"Winner : {winner}", file = PyPoll_Analysis)
-    print("----------------------------------", file = PyPoll_Analysis)
 
-       
-
-
-    
