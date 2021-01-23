@@ -1,14 +1,33 @@
-analysis_textfile = os.path.join("Analysis, "PyBank Analysis")
+# Attempt 1 at writing a txt file wrote the document line by line
+# Thanks to Beau Jeffrey for cracking the \n new line syntax and sharing with me!
+analysis_textfile = os.path.join("Analysis", "PyPoll Analysis.txt")
 
-with open(analysis_textfile, "w") as PyBank_Analysis:
+with open(analysis_textfile, "w") as PyPoll_Analysis:
 
-    file.write(
-    print("Financial Analysis")
-    print("----------------------------------")
-    print(f"Total Months: {total_months}")
-    print(f"Total: ${sum_of_pl}")
-    print(f"Average Change:  ${average_change}")
-    print(f"Greatest Increase in Profits: {greatest_increase_month} ${greatest_increase}")
-    print(f"Greatest Decrease in Profits: {greatest_decrease_month} ${greatest_decrease}")
-    )
-    file.close()
+    print("Election Results", file = PyPoll_Analysis)
+    print("----------------------------------", file = PyPoll_Analysis)
+    print(f"Total Votes:  {total_vote_count}", file = PyPoll_Analysis)
+    print("----------------------------------", file = PyPoll_Analysis)
+    for entry in election_results_tuple:
+        print(f'{entry[0]}: {entry[1]} {entry[2]}', file = PyPoll_Analysis)
+    print("----------------------------------", file = PyPoll_Analysis)
+    print(f"Winner : {winner}", file = PyPoll_Analysis)
+
+
+
+
+
+    # Attempt 1 at writing a txt file wrote the document line by line
+# Thanks to Beau Jeffrey for cracking the \n new line syntax and sharing with me!
+analysis_textfile = os.path.join("Analysis", "PyPoll Analysis.txt")
+
+with open(analysis_textfile, "w") as PyPoll_Analysis:
+
+    print("Election Results\n"
+    print("----------------------------------\n"
+    print(f"Total Votes:  {total_vote_count}\n"
+    print("----------------------------------", file = PyPoll_Analysis)
+    for entry in election_results_tuple:
+        print(f'{entry[0]}: {entry[1]} {entry[2]}', file = PyPoll_Analysis)
+    print("----------------------------------\n"
+    print(f"Winner : {winner}", file = PyPoll_Analysis)
