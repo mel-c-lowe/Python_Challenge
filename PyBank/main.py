@@ -60,6 +60,8 @@ average_change = round(total_changes / (len(changes_between_months) - 1), 2)
 
 # Calculate Greatest Increase
 # Find month of greatest increase
+# Thanks to Stephanie Richards for modeling the comparison of index locations!
+# I knew I wanted to do this and seeing her approach helped me actually execute on it.
 greatest_increase = max(changes_between_months)
 index_for_increase = changes_between_months.index(greatest_increase)
 greatest_increase_month = list_of_months[index_for_increase]

@@ -24,6 +24,8 @@ with open(election_csv_file) as election_data:
     # That's all I need in that loop because now I can read my list 
     # and set the csvfile aside as all additional data will not impact
     # the election results
+    # Credit to Stephanie Richards for sharing her approach to pull data to a lists vs a dictionary
+    # This helped me simplify a LOT of the work that had me stumped.
 
 # Count the number of votes
 total_vote_count = len(vote_cast)
